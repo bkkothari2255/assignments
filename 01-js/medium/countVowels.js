@@ -6,7 +6,12 @@
 */
 
 function countVowels(str) {
-    // Your code here
+    let vowels = 'aeiou';
+    let vowelCount = 0;
+    str.toLowerCase().split('').forEach((char) => {
+       if(vowels.includes(char)) vowelCount += 1;
+    })
+    return vowelCount;
 }
 
 module.exports = countVowels;
