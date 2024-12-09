@@ -14,7 +14,24 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+  var categorySet = new Set();
+  var categoryWiseSpentArray = [];
+  // find category -> find total spend 
+  for(let i in transactions){
+    categorySet.add(transactions[i].category);
+  }
+
+  for(let category of categorySet.keys()){
+    var totalSpent = 0;
+    for(let item in transactions){
+      const transaction = transactions[item];
+        if(category===transaction.category){
+          totalSpent += transaction.price;
+        }
+    }
+    categoryWiseSpentArray.push({"category": category, "totalSpent": totalSpent});
+  }
+  return categoryWiseSpentArray;
 }
 
 module.exports = calculateTotalSpentByCategory;
